@@ -1,4 +1,6 @@
 "use strict";
+const {By, until} = require('selenium-webdriver');
+
 
 const INPUT_FIELD_LOCATOR = '.new-todo';
 const MARK_ALL_TASKS_BUTTON_LOCATOR = 'toggle-all';
@@ -20,21 +22,80 @@ class BasePage {
     constructor(driver) {
         this.driver = driver;
         this.waitTimeout = 5000;
+        this.url = 'http://todomvc.com/examples/vue/';
     }
 
-    addNewTask() {}
+    async getInputField() {
+        return this.driver.findElement(By.css(INPUT_FIELD_LOCATOR));
+    }
 
-    markAllTasksDone() {}
+    async getMarkAllTasksButton() {
+        return this.driver.findElement(By.css(MARK_ALL_TASKS_BUTTON_LOCATOR));
+    }
+    async getEditTaskField() {
+        return this.driver.findElement(By.css(EDIT_TASK_LOCATOR));
+    }
 
-    markAllTasksUndone() {}
+    async getOpenedTasks() {
+        return this.driver.findElements(By.css(OPENED_TASKS_LOCATOR));
+    }
 
-    countActiveTasks() {}
+    async getCompletedtasks() {
+        return this.driver.findElements(By.css(COMPLETED_TASKS_LOCATOR));
+    }
 
-    countCompletedTasks() {}
+    async getAllTasks() {
+        return this.driver.findElements(By.css(ALL_TASKS_LOCATOR));
+    }
 
-    findTaskByText() {}
+    async getDestroyButtons() {
+        return this.driver.findElements(By.css(DESTROY_BUTTON_LOCATOR));
+    }
 
-    editTask() {}
+    async getMarkTaskDone() {
+        return this.driver.findElement(By.css(MARK_TASK_DONE_LOCATOR));
+    }
+
+    async getMarkTaskUndone() {
+        return this.driver.findElement(By.css(MARK_TASK_UNDONE_LOCATOR));
+    }
+
+    async getActiveTasksCounter() {
+        return this.driver.findElement(By.css(ACTIVE_TASKS_COUNTER_LOCATOR));
+    }
+
+    async getAllLink() {
+        return this.driver.findElement(By.css(ALL_LINK_LOCATOR));
+    }
+
+    async getActiveLink() {
+        return this.driver.findElement(By.css(ACTIVE_LINK_LOCATOR));
+    }
+
+    async getCompletedLink() {
+        return this.driver.findElement(By.css(COMPLETED_LINK_LOCATOR));
+    }
+
+     async getClearCompletedButton() {
+        return this.driver.findElement(By.css(CLEAR_COMPLETED_BUTTON_LOCATOR));
+     }
+
+    async addNewTask(text){
+        await (this.getInputField()).sendKeys(text);
+        await (this.getInputField()).sendKeys(this.driver.key.ENTER);
+    }
+
+    markAllTasksDone(){}
+
+    markAllTasksUndone(){}
+
+    countActiveTasks(){}
+
+    countCompletedTasks(){}
+
+    findTaskByText(){}
+
+    editTask(){}
 
     completeOneTask() {}
 
@@ -45,3 +106,4 @@ class BasePage {
     clearCompletedTasks() {}
 }
 
+module.exports = BasePage;

@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "node node_modules/jasmine/bin/jasmine ./spec/**.js"
+    "test": "node node_modules/jasmine/bin/jasmine ./spec/*_spec.js"
   },
   "keywords": [],
   "author": "",
@@ -19,7 +19,6 @@
     "eslint-plugin-standard": "^3.0.1",
     "jasmine": "^2.8.0",
     "jasmine-pretty-html-reporter": "^0.2.5",
-    "mocha": "^4.0.1",
     "selenium-webdriver": "^3.6.0"
   }
 }

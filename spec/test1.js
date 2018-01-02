@@ -1,16 +1,12 @@
 "use strict";
-const chai = require('chai');
-const expect = chai.expect;
 
 const promise = require('selenium-webdriver');
-const {Builder, By, until} = require('selenium-webdriver');
+const {Builder} = require('selenium-webdriver');
 const TIMEOUT = 10000;
+jasmine.DEFAULT_TIMEOUT_INTERVAL = 50000;
 const Page = require('./../src/pages/page');
 
 promise.USE_PROMISE_MANAGER = false;
-
-
-const test = require('selenium-webdriver/testing');
 
 
 describe('my first pure test', () => {
@@ -40,7 +36,7 @@ describe('my first pure test', () => {
         await page.getPage();
         await page.search();
         let title = await page.getTitle();
-        console.log(title);
-        expect(title).to.equal('SINOPTIK: Погода у Львові. Прогноз погоди Львів на тиждень, Україна');
+        // console.log(title);
+        expect(title).toEqual('SINOPTIK: Погода у Львові. Прогноз погоди Львів на тиждень, Україна');
     });
 });

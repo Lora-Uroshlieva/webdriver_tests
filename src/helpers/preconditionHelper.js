@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 function clearTasks() {
     browser.executeScript('localStorage.removeItem("todos-vuejs");');
